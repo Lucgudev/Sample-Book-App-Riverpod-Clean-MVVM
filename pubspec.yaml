@@ -37,6 +37,7 @@ dependencies:
   
   # State management
   flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
   
   # Code generation for immutable classes
   freezed_annotation: ^2.4.1
