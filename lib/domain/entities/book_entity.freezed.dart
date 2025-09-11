@@ -283,7 +283,8 @@ class __$$BookEntityImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$BookEntityImpl implements _BookEntity {
   const _$BookEntityImpl({
     required this.id,

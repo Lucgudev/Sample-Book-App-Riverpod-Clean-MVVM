@@ -140,7 +140,8 @@ class __$$AuthorEntityImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$AuthorEntityImpl implements _AuthorEntity {
   const _$AuthorEntityImpl({
     required this.name,

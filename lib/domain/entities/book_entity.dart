@@ -6,6 +6,7 @@ part 'book_entity.g.dart';
 
 @freezed
 class BookEntity with _$BookEntity {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory BookEntity({
     required int id,
     required String title,
@@ -21,5 +22,6 @@ class BookEntity with _$BookEntity {
     required int downloadCount,
   }) = _BookEntity;
 
-  factory BookEntity.fromJson(Map<String, dynamic> json) => _$BookEntityFromJson(json);
+  factory BookEntity.fromJson(Map<String, dynamic> json) =>
+      _$BookEntityFromJson(json);
 }

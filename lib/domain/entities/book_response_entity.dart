@@ -6,6 +6,7 @@ part 'book_response_entity.g.dart';
 
 @freezed
 class BookResponseEntity with _$BookResponseEntity {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory BookResponseEntity({
     required int count,
     String? next,
@@ -13,5 +14,6 @@ class BookResponseEntity with _$BookResponseEntity {
     required List<BookEntity> results,
   }) = _BookResponseEntity;
 
-  factory BookResponseEntity.fromJson(Map<String, dynamic> json) => _$BookResponseEntityFromJson(json);
+  factory BookResponseEntity.fromJson(Map<String, dynamic> json) =>
+      _$BookResponseEntityFromJson(json);
 }

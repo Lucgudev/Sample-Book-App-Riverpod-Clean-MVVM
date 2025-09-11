@@ -163,7 +163,8 @@ class __$$BookResponseEntityImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$BookResponseEntityImpl implements _BookResponseEntity {
   const _$BookResponseEntityImpl({
     required this.count,
