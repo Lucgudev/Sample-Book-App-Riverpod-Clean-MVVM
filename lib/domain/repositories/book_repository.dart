@@ -8,4 +8,9 @@ abstract class BookRepository {
   });
 
   Future<BookEntity> fetchBookDetail(int bookId);
+
+  Future<BookResponseEntity> fetchBooksByTopic({
+    required String topic,
+    int page = 1,
+  });
 }

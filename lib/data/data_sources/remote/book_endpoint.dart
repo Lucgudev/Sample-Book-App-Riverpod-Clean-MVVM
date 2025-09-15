@@ -32,4 +32,19 @@ class BookEndpoint {
     final response = await dio.get('/books/$bookId');
     return BookEntity.fromJson(response.data);
   }
+
+  Future<BookResponseEntity> fetchBooksByTopic({
+    required String topic,
+    int page = 1,
+  }) async {
+    final response = await dio.get(
+      '/books/',
+      queryParameters: {
+        'page': page,
+        'topic': topic,
+      },
+    );
+
+    return BookResponseEntity.fromJson(response.data);
+  }
 }

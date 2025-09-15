@@ -31,4 +31,15 @@ class BookRepositoryImpl implements BookRepository {
   Future<BookEntity> fetchBookDetail(int bookId) async {
     return await bookEndpoint.fetchBookDetail(bookId);
   }
+
+  @override
+  Future<BookResponseEntity> fetchBooksByTopic({
+    required String topic,
+    int page = 1,
+  }) async {
+    return await bookEndpoint.fetchBooksByTopic(
+      topic: topic,
+      page: page,
+    );
+  }
 }

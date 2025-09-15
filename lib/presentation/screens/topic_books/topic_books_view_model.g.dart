@@ -1,30 +1,30 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'book_detail_view_model.dart';
+part of 'topic_books_view_model.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$bookDetailViewModelHash() =>
-    r'295fd0a90d1a348608c36b4f3a9e7acb1f8441f8';
+String _$topicBooksViewModelHash() =>
+    r'591a68ed1e2a635f620a6d1a1d356fbb3a65da83';
 
-/// See also [BookDetailViewModel].
-@ProviderFor(BookDetailViewModel)
-final bookDetailViewModelProvider = AutoDisposeNotifierProvider<
-  BookDetailViewModel,
-  BookDetailViewState
+/// See also [TopicBooksViewModel].
+@ProviderFor(TopicBooksViewModel)
+final topicBooksViewModelProvider = AutoDisposeNotifierProvider<
+  TopicBooksViewModel,
+  TopicBooksViewState
 >.internal(
-  BookDetailViewModel.new,
-  name: r'bookDetailViewModelProvider',
+  TopicBooksViewModel.new,
+  name: r'topicBooksViewModelProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product')
           ? null
-          : _$bookDetailViewModelHash,
+          : _$topicBooksViewModelHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$BookDetailViewModel = AutoDisposeNotifier<BookDetailViewState>;
+typedef _$TopicBooksViewModel = AutoDisposeNotifier<TopicBooksViewState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

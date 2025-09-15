@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sample_book_app/domain/entities/book_entity.dart';
 import 'package:sample_book_app/core/services/url_launcher_service.dart';
+import 'package:sample_book_app/core/router/app_navigator_impl.dart';
+import 'package:sample_book_app/core/router/routes.dart';
 import 'book_detail_view_model.dart';
 
 class BookDetailScreen extends ConsumerStatefulWidget {
   final int bookId;
+  final BookEntity? bookData;
 
-  const BookDetailScreen({super.key, required this.bookId});
+  const BookDetailScreen({
+    super.key, 
+    required this.bookId,
+    this.bookData,
+  });
 
   @override
   ConsumerState<BookDetailScreen> createState() => _BookDetailScreenState();
@@ -20,7 +27,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref
           .read(bookDetailViewModelProvider.notifier)
-          .fetchBookDetail(widget.bookId);
+          .loadBookDetail(widget.bookId, bookData: widget.bookData);
     });
   }
 
@@ -69,7 +76,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 onPressed: () {
                   ref
                       .read(bookDetailViewModelProvider.notifier)
-                      .fetchBookDetail(widget.bookId);
+                      .loadBookDetail(widget.bookId, bookData: widget.bookData);
                 },
                 child: const Text('Retry'),
               ),
@@ -361,13 +368,22 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
               children:
                   book.subjects
                       .map(
-                        (subject) => Chip(
-                          label: Text(
-                            subject,
-                            style: theme.textTheme.bodySmall,
+                        (subject) => InkWell(
+                          onTap: () {
+                            ref.read(appNavigatorProvider).pushNamedWithResult(
+                              Routes.topicBookScreen,
+                              arguments: {'topic': subject},
+                            );
+                          },
+                          borderRadius: BorderRadius.circular(16),
+                          child: Chip(
+                            label: Text(
+                              subject,
+                              style: theme.textTheme.bodySmall,
+                            ),
+                            backgroundColor: theme.colorScheme.secondaryContainer,
+                            side: BorderSide.none,
                           ),
-                          backgroundColor: theme.colorScheme.secondaryContainer,
-                          side: BorderSide.none,
                         ),
                       )
                       .toList(),
@@ -411,10 +427,19 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
               children:
                   book.bookshelves
                       .map(
-                        (shelf) => Chip(
-                          label: Text(shelf, style: theme.textTheme.bodySmall),
-                          backgroundColor: theme.colorScheme.tertiaryContainer,
-                          side: BorderSide.none,
+                        (shelf) => InkWell(
+                          onTap: () {
+                            ref.read(appNavigatorProvider).pushNamedWithResult(
+                              Routes.topicBookScreen,
+                              arguments: {'topic': shelf},
+                            );
+                          },
+                          borderRadius: BorderRadius.circular(16),
+                          child: Chip(
+                            label: Text(shelf, style: theme.textTheme.bodySmall),
+                            backgroundColor: theme.colorScheme.tertiaryContainer,
+                            side: BorderSide.none,
+                          ),
                         ),
                       )
                       .toList(),
