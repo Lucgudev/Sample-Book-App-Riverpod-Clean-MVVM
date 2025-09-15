@@ -22,16 +22,18 @@ class EmptyStateWidget extends StatelessWidget {
         children: [
           Icon(icon, size: 64, color: Colors.grey),
           const SizedBox(height: 16),
-          const Text(
+          Text(
             'Oops',
-            style: TextStyle(fontSize: 18),
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+            ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
           Text(
             subtitle ?? 'No data found',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[600],
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
             ),
             textAlign: TextAlign.center,
           ),
@@ -39,7 +41,10 @@ class EmptyStateWidget extends StatelessWidget {
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: onRetry,
-              child: Text(retryButtonText ?? 'Try Again'),
+              child: Text(
+                retryButtonText ?? 'Try Again',
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
             ),
           ],
         ],

@@ -53,7 +53,10 @@ class _TopicBooksScreenState extends ConsumerState<TopicBooksScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Topic: ${widget.topic}'),
+        title: Text(
+          'Topic: ${widget.topic}',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: _buildBookList(state),

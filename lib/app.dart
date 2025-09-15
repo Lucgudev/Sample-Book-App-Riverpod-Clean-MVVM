@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/provider/global_provider.dart';
 import 'core/router/router.dart';
 import 'core/router/routes.dart';
+import 'core/theme/app_theme.dart';
 
 class SampleBookApp extends ConsumerStatefulWidget {
   const SampleBookApp({super.key});
@@ -27,10 +28,8 @@ class _SampleBookAppState extends ConsumerState<SampleBookApp> {
       navigatorKey: _navigatorKey,
       routes: Router.generateRoute(),
       initialRoute: Routes.homeScreen,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
     );
   }
 }

@@ -92,7 +92,9 @@ class BookListItem extends ConsumerWidget {
         children: [
           Text(
             book.title,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              fontWeight: FontWeight.w700, // Bold for emphasis
+            ),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
@@ -101,7 +103,9 @@ class BookListItem extends ConsumerWidget {
             book.authors.isNotEmpty
                 ? book.authors.map((author) => author.name).join(', ')
                 : 'Unknown Author',
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+            ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -110,7 +114,7 @@ class BookListItem extends ConsumerWidget {
             const SizedBox(height: 4),
             Text(
               [...book.subjects, ...book.bookshelves].take(2).join(', '),
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
                 color: Theme.of(context).colorScheme.primary,
               ),
               maxLines: 1,

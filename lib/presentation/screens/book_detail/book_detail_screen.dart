@@ -40,14 +40,26 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
 
     if (state.isLoading && state.book == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Book Details'), centerTitle: true),
+        appBar: AppBar(
+          title: Text(
+            'Book Details',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          centerTitle: true,
+        ),
         body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     if (state.error != null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Book Details'), centerTitle: true),
+        appBar: AppBar(
+          title: Text(
+            'Book Details',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          centerTitle: true,
+        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -80,7 +92,10 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                       .read(bookDetailViewModelProvider.notifier)
                       .loadBookDetail(widget.bookId, bookData: widget.bookData);
                 },
-                child: const Text('Retry'),
+                child: Text(
+                  'Retry',
+                  style: theme.textTheme.labelLarge,
+                ),
               ),
             ],
           ),
@@ -91,8 +106,19 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
     final book = state.book;
     if (book == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Book Details'), centerTitle: true),
-        body: const Center(child: Text('No book data available')),
+        appBar: AppBar(
+          title: Text(
+            'Book Details',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          centerTitle: true,
+        ),
+        body: Center(
+          child: Text(
+            'No book data available',
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+        ),
       );
     }
 
@@ -184,9 +210,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 const SizedBox(width: 8),
                 Text(
                   'Book Information',
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: theme.textTheme.titleMedium,
                 ),
               ],
             ),
@@ -217,13 +241,12 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
             width: 100,
             child: Text(
               '$label:',
-              style: theme.textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w600,
+              style: theme.textTheme.labelMedium?.copyWith(
                 color: theme.colorScheme.onSurface.withOpacity(0.7),
               ),
             ),
           ),
-          Expanded(child: Text(value, style: theme.textTheme.bodyMedium)),
+          Expanded(child: Text(value, style: theme.textTheme.bodyLarge)),
         ],
       ),
     );
@@ -249,16 +272,14 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 const SizedBox(width: 8),
                 Text(
                   'Summary',
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: theme.textTheme.titleMedium,
                 ),
               ],
             ),
             const SizedBox(height: 16),
             Text(
               book.summaries.first,
-              style: theme.textTheme.bodyMedium?.copyWith(height: 1.6),
+              style: theme.textTheme.bodyLarge?.copyWith(height: 1.6),
               textAlign: TextAlign.justify,
             ),
           ],
@@ -284,9 +305,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 const SizedBox(width: 8),
                 Text(
                   book.authors.length > 1 ? 'Authors' : 'Author',
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: theme.textTheme.titleMedium,
                 ),
               ],
             ),
@@ -317,14 +336,14 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                           Text(
                             author.name,
                             style: theme.textTheme.bodyLarge?.copyWith(
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                           if (author.birthYear != null ||
                               author.deathYear != null)
                             Text(
                               '${author.birthYear ?? '?'} - ${author.deathYear ?? 'Present'}',
-                              style: theme.textTheme.bodySmall?.copyWith(
+                              style: theme.textTheme.labelSmall?.copyWith(
                                 color: theme.colorScheme.onSurface.withOpacity(
                                   0.7,
                                 ),
@@ -360,9 +379,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 const SizedBox(width: 8),
                 Text(
                   'Subjects',
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: theme.textTheme.titleMedium,
                 ),
               ],
             ),
@@ -384,7 +401,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                           child: Chip(
                             label: Text(
                               subject,
-                              style: theme.textTheme.bodySmall,
+                              style: theme.textTheme.labelMedium,
                             ),
                             backgroundColor: theme.colorScheme.secondaryContainer,
                             side: BorderSide.none,
@@ -419,9 +436,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 const SizedBox(width: 8),
                 Text(
                   'Bookshelves',
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: theme.textTheme.titleMedium,
                 ),
               ],
             ),
@@ -441,7 +456,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                           },
                           borderRadius: BorderRadius.circular(16),
                           child: Chip(
-                            label: Text(shelf, style: theme.textTheme.bodySmall),
+                            label: Text(shelf, style: theme.textTheme.labelMedium),
                             backgroundColor: theme.colorScheme.tertiaryContainer,
                             side: BorderSide.none,
                           ),
@@ -473,9 +488,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 const SizedBox(width: 8),
                 Text(
                   'Statistics',
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: theme.textTheme.titleMedium,
                 ),
               ],
             ),
@@ -527,14 +540,14 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
           const SizedBox(height: 8),
           Text(
             value,
-            style: theme.textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
+            style: theme.textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.w800,
               color: theme.colorScheme.primary,
             ),
           ),
           Text(
             label,
-            style: theme.textTheme.bodySmall?.copyWith(
+            style: theme.textTheme.labelSmall?.copyWith(
               color: theme.colorScheme.onSurface.withOpacity(0.7),
             ),
           ),
@@ -560,9 +573,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 const SizedBox(width: 8),
                 Text(
                   'Available Formats',
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: theme.textTheme.titleMedium,
                 ),
               ],
             ),
