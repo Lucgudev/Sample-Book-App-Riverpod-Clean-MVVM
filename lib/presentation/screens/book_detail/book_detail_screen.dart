@@ -6,6 +6,7 @@ import 'package:sample_book_app/domain/entities/author_entity.dart';
 import 'package:sample_book_app/core/services/url_launcher_service.dart';
 import 'package:sample_book_app/core/router/app_navigator_impl.dart';
 import 'package:sample_book_app/core/router/routes.dart';
+import 'package:sample_book_app/l10n/app_localizations.dart';
 import 'book_detail_view_model.dart';
 
 class BookDetailScreen extends ConsumerStatefulWidget {
@@ -42,7 +43,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
       return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Book Details',
+            AppLocalizations.of(context).bookDetails,
             style: Theme.of(context).textTheme.titleLarge,
           ),
           centerTitle: true,
@@ -55,7 +56,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
       return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Book Details',
+            AppLocalizations.of(context).bookDetails,
             style: Theme.of(context).textTheme.titleLarge,
           ),
           centerTitle: true,
@@ -71,7 +72,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
               ),
               const SizedBox(height: 16),
               Text(
-                'Failed to load book details',
+                AppLocalizations.of(context).failedToLoadBookDetails,
                 style: theme.textTheme.headlineSmall,
               ),
               const SizedBox(height: 8),
@@ -93,7 +94,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                       .loadBookDetail(widget.bookId, bookData: widget.bookData);
                 },
                 child: Text(
-                  'Retry',
+                  AppLocalizations.of(context).retry,
                   style: theme.textTheme.labelLarge,
                 ),
               ),
@@ -108,14 +109,14 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
       return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Book Details',
+            AppLocalizations.of(context).bookDetails,
             style: Theme.of(context).textTheme.titleLarge,
           ),
           centerTitle: true,
         ),
         body: Center(
           child: Text(
-            'No book data available',
+            AppLocalizations.of(context).noBookDataAvailable,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
@@ -209,19 +210,19 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 Icon(Icons.info_outline, color: theme.colorScheme.primary),
                 const SizedBox(width: 8),
                 Text(
-                  'Book Information',
+                  AppLocalizations.of(context).bookInformation,
                   style: theme.textTheme.titleMedium,
                 ),
               ],
             ),
             const SizedBox(height: 16),
-            _buildInfoRow('ID', book.id.toString()),
-            _buildInfoRow('Language', book.languages.join(', ').toUpperCase()),
-            _buildInfoRow('Media Type', book.mediaType),
-            _buildInfoRow('Copyright', book.copyright ? 'Yes' : 'No'),
+            _buildInfoRow(AppLocalizations.of(context).id, book.id.toString()),
+            _buildInfoRow(AppLocalizations.of(context).language, book.languages.join(', ').toUpperCase()),
+            _buildInfoRow(AppLocalizations.of(context).mediaType, book.mediaType),
+            _buildInfoRow(AppLocalizations.of(context).copyright, book.copyright ? AppLocalizations.of(context).yes : AppLocalizations.of(context).no),
             _buildInfoRow(
-              'Downloads',
-              '${book.downloadCount.toString()} times',
+              AppLocalizations.of(context).downloads,
+              AppLocalizations.of(context).downloadsTimes(book.downloadCount.toString()),
             ),
           ],
         ),
@@ -271,7 +272,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Summary',
+                  AppLocalizations.of(context).summary,
                   style: theme.textTheme.titleMedium,
                 ),
               ],
@@ -304,7 +305,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 Icon(Icons.person_outline, color: theme.colorScheme.primary),
                 const SizedBox(width: 8),
                 Text(
-                  book.authors.length > 1 ? 'Authors' : 'Author',
+                  book.authors.length > 1 ? AppLocalizations.of(context).authors : AppLocalizations.of(context).author,
                   style: theme.textTheme.titleMedium,
                 ),
               ],
@@ -342,7 +343,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                           if (author.birthYear != null ||
                               author.deathYear != null)
                             Text(
-                              '${author.birthYear ?? '?'} - ${author.deathYear ?? 'Present'}',
+                              '${author.birthYear ?? '?'} - ${author.deathYear ?? AppLocalizations.of(context).present}',
                               style: theme.textTheme.labelSmall?.copyWith(
                                 color: theme.colorScheme.onSurface.withOpacity(
                                   0.7,
@@ -378,7 +379,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 Icon(Icons.category_outlined, color: theme.colorScheme.primary),
                 const SizedBox(width: 8),
                 Text(
-                  'Subjects',
+                  AppLocalizations.of(context).subjects,
                   style: theme.textTheme.titleMedium,
                 ),
               ],
@@ -435,7 +436,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Bookshelves',
+                  AppLocalizations.of(context).bookshelves,
                   style: theme.textTheme.titleMedium,
                 ),
               ],
@@ -487,7 +488,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Statistics',
+                  AppLocalizations.of(context).statistics,
                   style: theme.textTheme.titleMedium,
                 ),
               ],
@@ -498,7 +499,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 Expanded(
                   child: _buildStatCard(
                     context,
-                    'Downloads',
+                    AppLocalizations.of(context).downloads,
                     book.downloadCount.toString(),
                     Icons.download_outlined,
                   ),
@@ -507,7 +508,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 Expanded(
                   child: _buildStatCard(
                     context,
-                    'Formats',
+                    AppLocalizations.of(context).formats,
                     book.formats.length.toString(),
                     Icons.file_copy_outlined,
                   ),
@@ -572,7 +573,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 Icon(Icons.download_outlined, color: theme.colorScheme.primary),
                 const SizedBox(width: 8),
                 Text(
-                  'Available Formats',
+                  AppLocalizations.of(context).availableFormats,
                   style: theme.textTheme.titleMedium,
                 ),
               ],

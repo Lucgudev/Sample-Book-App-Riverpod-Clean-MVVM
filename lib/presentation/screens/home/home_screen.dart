@@ -4,8 +4,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 import 'package:sample_book_app/presentation/widgets/generic_error_widget.dart';
 import 'package:sample_book_app/presentation/widgets/book_list_item.dart';
 import 'package:sample_book_app/presentation/widgets/empty_state_widget.dart';
-import 'package:sample_book_app/domain/entities/book_entity.dart';
-import 'package:sample_book_app/domain/entities/author_entity.dart';
+import 'package:sample_book_app/l10n/app_localizations.dart';
 import 'home_view_model.dart';
 import 'home_view_state.dart';
 
@@ -53,7 +52,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Books',
+          AppLocalizations.of(context).books,
           style: Theme.of(context).textTheme.titleLarge,
         ),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -66,7 +65,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               padding: const EdgeInsets.all(16.0),
               child: SearchBar(
                 controller: _searchController,
-                hintText: 'Search books...',
+                hintText: AppLocalizations.of(context).searchBooksHint,
                 leading: const Icon(Icons.search),
                 trailing: [
                   if (_searchController.text.isNotEmpty)
@@ -74,7 +73,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       icon: const Icon(Icons.clear),
                       onPressed: () {
                         _searchController.clear();
-                        ref.read(homeViewModelProvider.notifier).searchBooks('');
+                        ref
+                            .read(homeViewModelProvider.notifier)
+                            .searchBooks('');
                       },
                     ),
                 ],
@@ -102,9 +103,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     }
 
     if (!state.isLoading && state.books.isEmpty) {
-      return const EmptyStateWidget(
+      return EmptyStateWidget(
         icon: Icons.book_outlined,
-        subtitle: 'No books found',
+        subtitle: AppLocalizations.of(context).noBooksFound,
       );
     }
 

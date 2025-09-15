@@ -4,6 +4,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 import 'package:sample_book_app/presentation/widgets/generic_error_widget.dart';
 import 'package:sample_book_app/presentation/widgets/book_list_item.dart';
 import 'package:sample_book_app/presentation/widgets/empty_state_widget.dart';
+import 'package:sample_book_app/l10n/app_localizations.dart';
 import 'topic_books_view_model.dart';
 import 'topic_books_view_state.dart';
 
@@ -54,7 +55,7 @@ class _TopicBooksScreenState extends ConsumerState<TopicBooksScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Topic: ${widget.topic}',
+          AppLocalizations.of(context).topicTitle(widget.topic),
           style: Theme.of(context).textTheme.titleLarge,
         ),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -77,7 +78,7 @@ class _TopicBooksScreenState extends ConsumerState<TopicBooksScreen> {
     if (!state.isLoading && state.books.isEmpty) {
       return EmptyStateWidget(
         icon: Icons.book_outlined,
-        subtitle: 'No books found for "${widget.topic}"',
+        subtitle: AppLocalizations.of(context).noBooksFoundForTopic(widget.topic),
       );
     }
 

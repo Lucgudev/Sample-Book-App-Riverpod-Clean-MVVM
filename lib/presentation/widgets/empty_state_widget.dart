@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample_book_app/l10n/app_localizations.dart';
 
 class EmptyStateWidget extends StatelessWidget {
   final IconData icon;
@@ -23,7 +24,7 @@ class EmptyStateWidget extends StatelessWidget {
           Icon(icon, size: 64, color: Colors.grey),
           const SizedBox(height: 16),
           Text(
-            'Oops',
+            AppLocalizations.of(context).oops,
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
             ),
@@ -31,7 +32,7 @@ class EmptyStateWidget extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            subtitle ?? 'No data found',
+            subtitle ?? AppLocalizations.of(context).noDataFound,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
             ),
@@ -42,7 +43,7 @@ class EmptyStateWidget extends StatelessWidget {
             ElevatedButton(
               onPressed: onRetry,
               child: Text(
-                retryButtonText ?? 'Try Again',
+                retryButtonText ?? AppLocalizations.of(context).tryAgain,
                 style: Theme.of(context).textTheme.labelLarge,
               ),
             ),

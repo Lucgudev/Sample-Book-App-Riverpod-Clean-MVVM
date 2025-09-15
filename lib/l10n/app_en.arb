@@ -1,0 +1,181 @@
+{
+  "@@locale": "en",
+  
+  "appTitle": "Sample Book App",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  
+  "books": "Books",
+  "@books": {
+    "description": "Books title for home screen"
+  },
+  
+  "bookDetails": "Book Details",
+  "@bookDetails": {
+    "description": "Book details screen title"
+  },
+  
+  "searchBooksHint": "Search books...",
+  "@searchBooksHint": {
+    "description": "Placeholder text for search bar"
+  },
+  
+  "topicTitle": "Topic: {topic}",
+  "@topicTitle": {
+    "description": "Topic books screen title",
+    "placeholders": {
+      "topic": {
+        "type": "String",
+        "example": "Fiction"
+      }
+    }
+  },
+  
+  "unknownAuthor": "Unknown Author",
+  "@unknownAuthor": {
+    "description": "Text shown when author information is not available"
+  },
+  
+  "oops": "Oops",
+  "@oops": {
+    "description": "Error state title"
+  },
+  
+  "noDataFound": "No data found",
+  "@noDataFound": {
+    "description": "Default empty state message"
+  },
+  
+  "noBooksFound": "No books found",
+  "@noBooksFound": {
+    "description": "Empty state message when no books are available"
+  },
+  
+  "noBooksFoundForTopic": "No books found for \"{topic}\"",
+  "@noBooksFoundForTopic": {
+    "description": "Empty state message for topic books screen",
+    "placeholders": {
+      "topic": {
+        "type": "String",
+        "example": "Fiction"
+      }
+    }
+  },
+  
+  "tryAgain": "Try Again",
+  "@tryAgain": {
+    "description": "Retry button text"
+  },
+  
+  "retry": "Retry",
+  "@retry": {
+    "description": "Retry button text for error states"
+  },
+  
+  "failedToLoadBookDetails": "Failed to load book details",
+  "@failedToLoadBookDetails": {
+    "description": "Error message when book details fail to load"
+  },
+  
+  "noBookDataAvailable": "No book data available",
+  "@noBookDataAvailable": {
+    "description": "Message when no book data is available"
+  },
+  
+  "bookInformation": "Book Information",
+  "@bookInformation": {
+    "description": "Book information section title"
+  },
+  
+  "summary": "Summary",
+  "@summary": {
+    "description": "Book summary section title"
+  },
+  
+  "author": "Author",
+  "@author": {
+    "description": "Single author section title"
+  },
+  
+  "authors": "Authors",
+  "@authors": {
+    "description": "Multiple authors section title"
+  },
+  
+  "subjects": "Subjects",
+  "@subjects": {
+    "description": "Book subjects section title"
+  },
+  
+  "bookshelves": "Bookshelves",
+  "@bookshelves": {
+    "description": "Book bookshelves section title"
+  },
+  
+  "statistics": "Statistics",
+  "@statistics": {
+    "description": "Book statistics section title"
+  },
+  
+  "availableFormats": "Available Formats",
+  "@availableFormats": {
+    "description": "Book formats section title"
+  },
+  
+  "id": "ID",
+  "@id": {
+    "description": "Book ID label"
+  },
+  
+  "language": "Language",
+  "@language": {
+    "description": "Book language label"
+  },
+  
+  "mediaType": "Media Type",
+  "@mediaType": {
+    "description": "Book media type label"
+  },
+  
+  "copyright": "Copyright",
+  "@copyright": {
+    "description": "Book copyright label"
+  },
+  
+  "downloads": "Downloads",
+  "@downloads": {
+    "description": "Book downloads label"
+  },
+  
+  "downloadsTimes": "{count} times",
+  "@downloadsTimes": {
+    "description": "Download count with times suffix",
+    "placeholders": {
+      "count": {
+        "type": "String",
+        "example": "1000"
+      }
+    }
+  },
+  
+  "formats": "Formats",
+  "@formats": {
+    "description": "Number of formats label"
+  },
+  
+  "yes": "Yes",
+  "@yes": {
+    "description": "Affirmative response"
+  },
+  
+  "no": "No",
+  "@no": {
+    "description": "Negative response"
+  },
+  
+  "present": "Present",
+  "@present": {
+    "description": "Used for author death year when still alive"
+  }
+}

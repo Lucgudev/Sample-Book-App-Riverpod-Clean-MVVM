@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:sample_book_app/l10n/app_localizations.dart';
 import 'core/provider/global_provider.dart';
 import 'core/router/router.dart';
 import 'core/router/routes.dart';
@@ -30,6 +32,15 @@ class _SampleBookAppState extends ConsumerState<SampleBookApp> {
       initialRoute: Routes.homeScreen,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'), // English
+      ],
     );
   }
 }

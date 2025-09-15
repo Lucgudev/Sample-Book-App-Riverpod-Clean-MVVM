@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sample_book_app/domain/entities/book_entity.dart';
 import 'package:sample_book_app/core/router/app_navigator_impl.dart';
 import 'package:sample_book_app/core/router/routes.dart';
+import 'package:sample_book_app/l10n/app_localizations.dart';
 
 class BookListItem extends ConsumerWidget {
   final BookEntity book;
@@ -102,7 +103,7 @@ class BookListItem extends ConsumerWidget {
           Text(
             book.authors.isNotEmpty
                 ? book.authors.map((author) => author.name).join(', ')
-                : 'Unknown Author',
+                : AppLocalizations.of(context).unknownAuthor,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
             ),
