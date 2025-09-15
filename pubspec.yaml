@@ -75,6 +75,9 @@ dev_dependencies:
   freezed: ^2.5.7
   intl_utils: ^2.8.7
   flutter_launcher_icons: ^0.14.4
+  
+  # Testing dependencies
+  mockito: ^5.4.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
