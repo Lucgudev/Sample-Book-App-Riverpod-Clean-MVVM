@@ -13,11 +13,7 @@ class BookDetailScreen extends ConsumerStatefulWidget {
   final int bookId;
   final BookEntity? bookData;
 
-  const BookDetailScreen({
-    super.key, 
-    required this.bookId,
-    this.bookData,
-  });
+  const BookDetailScreen({super.key, required this.bookId, this.bookData});
 
   @override
   ConsumerState<BookDetailScreen> createState() => _BookDetailScreenState();
@@ -217,12 +213,25 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
             ),
             const SizedBox(height: 16),
             _buildInfoRow(AppLocalizations.of(context).id, book.id.toString()),
-            _buildInfoRow(AppLocalizations.of(context).language, book.languages.join(', ').toUpperCase()),
-            _buildInfoRow(AppLocalizations.of(context).mediaType, book.mediaType),
-            _buildInfoRow(AppLocalizations.of(context).copyright, book.copyright ? AppLocalizations.of(context).yes : AppLocalizations.of(context).no),
+            _buildInfoRow(
+              AppLocalizations.of(context).language,
+              book.languages.join(', ').toUpperCase(),
+            ),
+            _buildInfoRow(
+              AppLocalizations.of(context).mediaType,
+              book.mediaType,
+            ),
+            _buildInfoRow(
+              AppLocalizations.of(context).copyright,
+              book.copyright
+                  ? AppLocalizations.of(context).yes
+                  : AppLocalizations.of(context).no,
+            ),
             _buildInfoRow(
               AppLocalizations.of(context).downloads,
-              AppLocalizations.of(context).downloadsTimes(book.downloadCount.toString()),
+              AppLocalizations.of(
+                context,
+              ).downloadsTimes(book.downloadCount.toString()),
             ),
           ],
         ),
@@ -236,7 +245,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
             width: 100,
@@ -305,7 +314,9 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                 Icon(Icons.person_outline, color: theme.colorScheme.primary),
                 const SizedBox(width: 8),
                 Text(
-                  book.authors.length > 1 ? AppLocalizations.of(context).authors : AppLocalizations.of(context).author,
+                  book.authors.length > 1
+                      ? AppLocalizations.of(context).authors
+                      : AppLocalizations.of(context).author,
                   style: theme.textTheme.titleMedium,
                 ),
               ],
@@ -393,10 +404,12 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                       .map(
                         (subject) => InkWell(
                           onTap: () {
-                            ref.read(appNavigatorProvider).pushNamedWithResult(
-                              Routes.topicBookScreen,
-                              arguments: {'topic': subject},
-                            );
+                            ref
+                                .read(appNavigatorProvider)
+                                .pushNamedWithResult(
+                                  Routes.topicBookScreen,
+                                  arguments: {'topic': subject},
+                                );
                           },
                           borderRadius: BorderRadius.circular(16),
                           child: Chip(
@@ -404,7 +417,8 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                               subject,
                               style: theme.textTheme.labelMedium,
                             ),
-                            backgroundColor: theme.colorScheme.secondaryContainer,
+                            backgroundColor:
+                                theme.colorScheme.secondaryContainer,
                             side: BorderSide.none,
                           ),
                         ),
@@ -450,15 +464,21 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
                       .map(
                         (shelf) => InkWell(
                           onTap: () {
-                            ref.read(appNavigatorProvider).pushNamedWithResult(
-                              Routes.topicBookScreen,
-                              arguments: {'topic': shelf},
-                            );
+                            ref
+                                .read(appNavigatorProvider)
+                                .pushNamedWithResult(
+                                  Routes.topicBookScreen,
+                                  arguments: {'topic': shelf},
+                                );
                           },
                           borderRadius: BorderRadius.circular(16),
                           child: Chip(
-                            label: Text(shelf, style: theme.textTheme.labelMedium),
-                            backgroundColor: theme.colorScheme.tertiaryContainer,
+                            label: Text(
+                              shelf,
+                              style: theme.textTheme.labelMedium,
+                            ),
+                            backgroundColor:
+                                theme.colorScheme.tertiaryContainer,
                             side: BorderSide.none,
                           ),
                         ),
