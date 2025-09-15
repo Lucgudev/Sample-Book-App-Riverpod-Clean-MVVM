@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:sample_book_app/presentation/widgets/generic_error_widget.dart';
 import 'package:sample_book_app/presentation/widgets/book_list_item.dart';
 import 'package:sample_book_app/presentation/widgets/empty_state_widget.dart';
@@ -60,10 +61,6 @@ class _TopicBooksScreenState extends ConsumerState<TopicBooksScreen> {
   }
 
   Widget _buildBookList(TopicBooksViewState state) {
-    if (state.isLoading) {
-      return const Center(child: CircularProgressIndicator());
-    }
-
     if (state.error != null) {
       return GenericErrorWidget(
         errorMessage: state.error,
@@ -74,27 +71,30 @@ class _TopicBooksScreenState extends ConsumerState<TopicBooksScreen> {
       );
     }
 
-    if (state.books.isEmpty) {
+    if (!state.isLoading && state.books.isEmpty) {
       return EmptyStateWidget(
         icon: Icons.book_outlined,
         subtitle: 'No books found for "${widget.topic}"',
       );
     }
 
-    return ListView.builder(
-      controller: _scrollController,
-      itemCount: state.books.length + (state.hasMore ? 1 : 0),
-      itemBuilder: (context, index) {
-        if (index == state.books.length) {
-          return _buildLoadingIndicator();
-        }
+    return Skeletonizer(
+      enabled: state.isLoading,
+      child: ListView.builder(
+        controller: _scrollController,
+        itemCount: state.books.length + (state.hasMore ? 1 : 0),
+        itemBuilder: (context, index) {
+          if (index == state.books.length) {
+            return _buildLoadingIndicator();
+          }
 
-        final book = state.books[index];
-        return BookListItem(
-          book: book,
-          showTopicInfo: true,
-        );
-      },
+          final book = state.books[index];
+          return BookListItem(
+            book: book,
+            showTopicInfo: true,
+          );
+        },
+      ),
     );
   }
 

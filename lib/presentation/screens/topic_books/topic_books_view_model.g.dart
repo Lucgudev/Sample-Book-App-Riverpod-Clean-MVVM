@@ -7,7 +7,7 @@ part of 'topic_books_view_model.dart';
 // **************************************************************************
 
 String _$topicBooksViewModelHash() =>
-    r'591a68ed1e2a635f620a6d1a1d356fbb3a65da83';
+    r'facd680872403a2b26c638c509550fea43c47838';
 
 /// See also [TopicBooksViewModel].
 @ProviderFor(TopicBooksViewModel)

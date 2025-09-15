@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:sample_book_app/domain/entities/book_entity.dart';
+import 'package:sample_book_app/domain/entities/author_entity.dart';
 import 'package:sample_book_app/core/services/url_launcher_service.dart';
 import 'package:sample_book_app/core/router/app_navigator_impl.dart';
 import 'package:sample_book_app/core/router/routes.dart';
@@ -36,7 +38,7 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
     final state = ref.watch(bookDetailViewModelProvider);
     final theme = Theme.of(context);
 
-    if (state.isLoading) {
+    if (state.isLoading && state.book == null) {
       return Scaffold(
         appBar: AppBar(title: const Text('Book Details'), centerTitle: true),
         body: const Center(child: CircularProgressIndicator()),
@@ -95,34 +97,37 @@ class _BookDetailScreenState extends ConsumerState<BookDetailScreen> {
     }
 
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          _buildAppBar(context, book),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildBookInfo(context, book),
-                  const SizedBox(height: 24),
-                  _buildSummary(context, book),
-                  const SizedBox(height: 24),
-                  _buildAuthors(context, book),
-                  const SizedBox(height: 24),
-                  _buildSubjects(context, book),
-                  const SizedBox(height: 24),
-                  _buildBookshelves(context, book),
-                  const SizedBox(height: 24),
-                  _buildMetadata(context, book),
-                  const SizedBox(height: 24),
-                  _buildDownloadFormats(context, book),
-                  const SizedBox(height: 32),
-                ],
+      body: Skeletonizer(
+        enabled: state.isLoading,
+        child: CustomScrollView(
+          slivers: [
+            _buildAppBar(context, book),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildBookInfo(context, book),
+                    const SizedBox(height: 24),
+                    _buildSummary(context, book),
+                    const SizedBox(height: 24),
+                    _buildAuthors(context, book),
+                    const SizedBox(height: 24),
+                    _buildSubjects(context, book),
+                    const SizedBox(height: 24),
+                    _buildBookshelves(context, book),
+                    const SizedBox(height: 24),
+                    _buildMetadata(context, book),
+                    const SizedBox(height: 24),
+                    _buildDownloadFormats(context, book),
+                    const SizedBox(height: 32),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

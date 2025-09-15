@@ -15,7 +15,7 @@ class HomeViewModel extends _$HomeViewModel {
     if (loadMore) {
       state = state.copyWith(isLoadingMore: true);
     } else {
-      state = state.copyWith(isLoading: true, books: [], currentPage: 1);
+      state = HomeViewState.dummyState();
     }
 
     try {
@@ -26,7 +26,7 @@ class HomeViewModel extends _$HomeViewModel {
       );
 
       final newBooks = response.results;
-      
+
       if (loadMore) {
         state = state.copyWith(
           books: [...state.books, ...newBooks],

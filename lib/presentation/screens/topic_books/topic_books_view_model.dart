@@ -1,5 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../data/repositories/book_repository_impl.dart';
+import 'package:sample_book_app/data/repositories/book_repository_impl.dart';
+import 'package:sample_book_app/domain/entities/book_entity.dart';
+import 'package:sample_book_app/domain/entities/author_entity.dart';
 import 'topic_books_view_state.dart';
 
 part 'topic_books_view_model.g.dart';
@@ -11,16 +13,12 @@ class TopicBooksViewModel extends _$TopicBooksViewModel {
     return const TopicBooksViewState();
   }
 
+
   Future<void> fetchBooksByTopic(String topic, {bool loadMore = false}) async {
     if (loadMore) {
       state = state.copyWith(isLoadingMore: true);
     } else {
-      state = state.copyWith(
-        isLoading: true, 
-        books: [], 
-        currentPage: 1,
-        topic: topic,
-      );
+      state = TopicBooksViewState.dummyState(topic);
     }
 
     try {
