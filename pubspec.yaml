@@ -75,6 +75,7 @@ dev_dependencies:
   freezed: ^2.5.7
   intl_utils: ^2.8.7
   flutter_launcher_icons: ^0.14.4
+  rename_app: ^1.6.5
   
   # Testing dependencies
   mockito: ^5.4.4
