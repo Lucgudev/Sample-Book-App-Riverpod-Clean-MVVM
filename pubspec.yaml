@@ -74,7 +74,7 @@ dev_dependencies:
   build_runner: ^2.4.12
   freezed: ^2.5.7
   intl_utils: ^2.8.7
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons: ^0.14.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -119,3 +119,16 @@ flutter:
         - asset: assets/font/Inter/Inter-ExtraBoldItalic.ttf
           weight: 800
           style: italic
+
+# Flutter Launcher Icons configuration
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  min_sdk_android: 21
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: "assets/images/app_icon.png"
+    background_color: "#2563EB"
+    theme_color: "#2563EB"
