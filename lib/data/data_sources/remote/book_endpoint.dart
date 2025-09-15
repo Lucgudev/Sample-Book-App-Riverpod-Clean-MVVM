@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sample_book_app/core/provider/global_provider.dart';
 import 'package:sample_book_app/domain/entities/book_response_entity.dart';
+import 'package:sample_book_app/domain/entities/book_entity.dart';
 
 part 'book_endpoint.g.dart';
 
@@ -25,5 +26,10 @@ class BookEndpoint {
     );
 
     return BookResponseEntity.fromJson(response.data);
+  }
+
+  Future<BookEntity> fetchBookDetail(int bookId) async {
+    final response = await dio.get('/books/$bookId');
+    return BookEntity.fromJson(response.data);
   }
 }

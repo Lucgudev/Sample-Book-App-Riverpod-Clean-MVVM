@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sample_book_app/presentation/widgets/generic_error_widget.dart';
+import 'package:sample_book_app/core/router/app_navigator_impl.dart';
+import 'package:sample_book_app/core/router/routes.dart';
 import 'home_view_model.dart';
 import 'home_view_state.dart';
 
@@ -121,9 +123,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         return Card(
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
           child: InkWell(
-            onTap: () {
-              // TODO: Navigate to book details
-            },
+            onTap: () => ref.read(appNavigatorProvider).pushNamedWithResult(Routes.bookScreen, arguments: {'bookId': book.id}),
             borderRadius: BorderRadius.circular(12),
             child: Padding(
               padding: const EdgeInsets.all(12.0),

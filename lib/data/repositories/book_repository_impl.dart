@@ -1,7 +1,8 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../domain/entities/book_response_entity.dart';
-import '../../domain/repositories/book_repository.dart';
-import '../data_sources/remote/book_endpoint.dart';
+import 'package:sample_book_app/domain/entities/book_response_entity.dart';
+import 'package:sample_book_app/domain/entities/book_entity.dart';
+import 'package:sample_book_app/domain/repositories/book_repository.dart';
+import 'package:sample_book_app/data/data_sources/remote/book_endpoint.dart';
 
 part 'book_repository_impl.g.dart';
 
@@ -24,5 +25,10 @@ class BookRepositoryImpl implements BookRepository {
       page: page,
       search: search,
     );
+  }
+
+  @override
+  Future<BookEntity> fetchBookDetail(int bookId) async {
+    return await bookEndpoint.fetchBookDetail(bookId);
   }
 }
